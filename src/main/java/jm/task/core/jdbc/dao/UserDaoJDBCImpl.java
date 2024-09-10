@@ -22,14 +22,6 @@ public class UserDaoJDBCImpl implements UserDao {
                 "age tinyint not null" +
                 ")";
         try (Statement statement = connection.createStatement()) {
-//            statement.execute("""
-//                    CREATE TABLE IF NOT EXISTS `pp-1-1-3-4`.`users` (
-//                      `id` INT NOT NULL AUTO_INCREMENT,
-//                      `name` VARCHAR(45) NULL,
-//                      `lastName` VARCHAR(45) NOT NULL,
-//                      `age` TINYINT NOT NULL,
-//                      PRIMARY KEY (`id`));""");
-
             statement.execute(sql);
         } catch (SQLException e) {
             System.err.println("error creating users table" + e.getMessage());
@@ -67,7 +59,8 @@ public class UserDaoJDBCImpl implements UserDao {
             preparedStatement.setLong(1, id);
             preparedStatement.executeUpdate();
         } catch (SQLException e) {
-            System.err.println("error removing user: " + e.getMessage());;
+            System.err.println("error removing user: " + e.getMessage());
+            ;
         }
     }
 
